@@ -1,0 +1,24 @@
+diff -ru ../passivedns-1.2.0/src/dns.c ./src/dns.c
+--- ../passivedns-1.2.0/src/dns.c	2015-09-25 19:30:46.000000000 +0200
++++ ./src/dns.c	2015-10-21 09:00:05.000000000 +0200
+@@ -1071,7 +1071,7 @@
+     /* Print to syslog */
+     if ((is_err_record && config.output_syslog_nxd) ||
+         (!is_err_record && config.output_syslog)) {
+-        openlog(PDNS_IDENT, LOG_NDELAY, LOG_LOCAL7);
++        openlog(PDNS_IDENT, LOG_NDELAY, LOG_LOCAL6);
+         syslog(LOG_INFO, "%s", output);
+         closelog();
+     }
+diff -ru ../passivedns-1.2.0/src/passivedns.c ./src/passivedns.c
+--- ../passivedns-1.2.0/src/passivedns.c	2015-09-25 19:30:46.000000000 +0200
++++ ./src/passivedns.c	2015-10-21 09:00:16.000000000 +0200
+@@ -1069,7 +1069,7 @@
+ #endif /* HAVE_PFRING */
+     olog(" -l <file>       Logfile normal queries (default: /var/log/passivedns.log).\n");
+     olog(" -L <file>       Logfile for SRC Error queries (default: /var/log/passivedns.log).\n");
+-    olog(" -y              Log to syslog (uses local7 syslog facility).\n");
++    olog(" -y              Log to syslog (uses local6 syslog facility).\n");
+     olog(" -Y              Log NXDOMAIN to syslog.\n");
+     olog(" -d <delimiter>  Delimiter between fields in log file (default: ||).\n");
+ #ifdef HAVE_JSON
