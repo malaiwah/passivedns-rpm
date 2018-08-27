@@ -4,15 +4,16 @@
 %define initdir         /etc/init.d
 
 Name: passivedns
-Version: 1.2.0
-Release: 3.20151019git3e0611d.cgk.el%{rhel}
+Version: 1.2.1
+Release: 1.20180703git945fcea.el5
 Summary: A network sniffer that logs all DNS server replies for use in a passive DNS setup
 License: GPLv2
 Group: Monitoring
 URL: https://github.com/gamelinux/passivedns
-Source: %name-%version.tar
+Source: %name-%version.tar.gz
 Patch:  passivedns-syslog.patch
 Packager: Fabian Dammekens <fabian@dammekens.be>
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: libpcap-devel ldns-devel perl-DateTime perl-DBI perl-Date-Simple openssl-devel
 
@@ -96,6 +97,8 @@ sed -i "s|^PIDFILE=|PIDFILE=%{runtimedir}/%name/%name.pid|g" %buildroot%_sysconf
 %_bindir/*.pl
 
 %changelog
+* Mon Aug 27 2018 Michel Belleau <michel.belleau@malaiwah.com> 1.2.1-1.20180703git945fcea
+- Adjusted to be working on old ancient EL5 and bumped up passivedns version to latest 1.2.1
 * Wed Oct 21 2015 Fabian Dammekens <fabian@dammekens.be> 1.2.0-3.20151019git3e0611d
 - patch to send syslog messages to facility local6
 * Wed Sep 23 2015 Fabian Dammekens <fabian@dammekens.be> 1.2.0-1.20150923gitdda831c

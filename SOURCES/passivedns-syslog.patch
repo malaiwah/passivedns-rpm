@@ -4,7 +4,7 @@ diff -ru ../passivedns-1.2.0/src/dns.c ./src/dns.c
 @@ -1071,7 +1071,7 @@
      /* Print to syslog */
      if ((is_err_record && config.output_syslog_nxd) ||
-         (!is_err_record && config.output_syslog)) {
+             (!is_err_record && config.output_syslog)) {
 -        openlog(PDNS_IDENT, LOG_NDELAY, LOG_LOCAL7);
 +        openlog(PDNS_IDENT, LOG_NDELAY, LOG_LOCAL6);
          syslog(LOG_INFO, "%s", output);
