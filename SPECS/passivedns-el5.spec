@@ -66,6 +66,7 @@ install -pD -m755 etc/sysconfig/passivedns-redhat %buildroot%_sysconfdir/sysconf
 install -pD -m755 etc/logrotate.d/passivedns %buildroot%{logrotatedir}/%name
 
 sed -i "s|^LOGFILE=|LOGFILE=%{logdir}/%name/%name.log|g" %buildroot%_sysconfdir/sysconfig/%name
+sed -i "s|^/var/log/%name.log {|%{logdir}/%name/%name.log {|g" %buildroot%_sysconfdir/logrotate.d/%name
 sed -i "s|^USER=|USER=passivedns|g" %buildroot%_sysconfdir/sysconfig/%name
 sed -i "s|^GROUP=|GROUP=passivedns|g" %buildroot%_sysconfdir/sysconfig/%name
 sed -i "s|^INTERFACE=|INTERFACE=eth0|g" %buildroot%_sysconfdir/sysconfig/%name
