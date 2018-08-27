@@ -25,6 +25,12 @@ losing the essense in the DNS answer.
 ```
 wget "https://github.com/gamelinux/passivedns/archive/1.2.1.tar.gz" -O passivedns-1.2.1.tar.gz
 ```
+## Quirks for old ancient EL5
+Need a greater version for autoconf and m4
+```
+wget "https://rpmfind.net/linux/Mandriva/official/2008.0/x86_64/media/main/release/autoconf-2.61-6mdv2008.0.noarch.rpm" "https://rpmfind.net/linux/Mandriva/official/2008.0/x86_64/media/main/release/m4-1.4.10-1mdv2008.0.x86_64.rpm" && \
+rpm -ivh autoconf-2.61-6mdv2008.0.noarch.rpm m4-1.4.10-1mdv2008.0.x86_64.rpm
+```
 ## Build RPM
 ```
 export rhel=el6
